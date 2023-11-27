@@ -268,6 +268,7 @@ lora_downloads = get_config_item_or_set_default(
 )
 print ('!', lora_downloads) #!
 lora_downloads['eye_lora'] = 'https://civitai.com/api/download/models/6433' #!
+print ('!', lora_downloads) #!
 embeddings_downloads = get_config_item_or_set_default(
     key='embeddings_downloads',
     default_value={},
