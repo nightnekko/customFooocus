@@ -136,6 +136,7 @@ def get_config_item_or_set_default(key, default_value, validator, disable_empty_
     
     if key not in config_dict:
         config_dict[key] = default_value
+        print('!', default_value) #!
         return default_value
 
     v = config_dict.get(key, None)
@@ -143,11 +144,13 @@ def get_config_item_or_set_default(key, default_value, validator, disable_empty_
         if v is None or v == '':
             v = 'None'
     if validator(v):
+        print('!', v) #!
         return v
     else:
         if v is not None:
             print(f'Failed to load config key: {json.dumps({key:v})} is invalid; will use {json.dumps({key:default_value})} instead.')
         config_dict[key] = default_value
+        print('!', default_value) #!
         return default_value
 
 
@@ -259,7 +262,7 @@ lora_downloads = get_config_item_or_set_default(
     key='lora_downloads',
     default_value={
         "sd_xl_offset_example-lora_1.0.safetensors": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_offset_example-lora_1.0.safetensors",
-        "eye_lora": "https://civitai.com/api/download/models/6433"
+        "eye_lora": "https://civitai.com/api/download/models/6433" #!
     },
     validator=lambda x: isinstance(x, dict) and all(isinstance(k, str) and isinstance(v, str) for k, v in x.items())
 )
