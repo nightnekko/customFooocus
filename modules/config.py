@@ -266,7 +266,8 @@ lora_downloads = get_config_item_or_set_default(
     },
     validator=lambda x: isinstance(x, dict) and all(isinstance(k, str) and isinstance(v, str) for k, v in x.items())
 )
-print ('!', lora_downloads)
+print ('!', lora_downloads) #!
+lora_downloads['eye_lora'] = 'https://civitai.com/api/download/models/6433' #!
 embeddings_downloads = get_config_item_or_set_default(
     key='embeddings_downloads',
     default_value={},
